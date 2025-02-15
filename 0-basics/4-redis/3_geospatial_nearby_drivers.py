@@ -10,6 +10,14 @@ def add_driver(driver_id, lat, lon):
     r.geoadd('cars:locations', (lon, lat, driver_id))
     print(f"Driver {driver_id} added at latitude {lat}, longitude {lon}")
 
+# Function to get the geohash of a driver
+def get_driver_geohash(driver_id):
+    return r.geohash('cars:locations', driver_id)
+    # if geohash:
+    #     print(f"Driver {driver_id} has geohash: {geohash[0]}")
+    # else:
+    #     print(f"Driver {driver_id} not found.")
+
 # Function to find nearby drivers within a certain radius
 def find_nearby_drivers(lat, lon, radius, unit='mi'):
     # Find drivers within the specified radius (default is miles)
@@ -18,7 +26,8 @@ def find_nearby_drivers(lat, lon, radius, unit='mi'):
         print(f"Nearby drivers within {radius} {unit}:")
         for driver in nearby_drivers:
             driver_id, distance = driver
-            print(f"Driver ID: {driver_id}, Distance: {distance} {unit}")
+            geo_hash = get_driver_geohash(driver_id)
+            print(f"Driver ID: {driver_id}, Distance: {distance} {unit}, Geohash: {geo_hash}")
     else:
         print("No nearby drivers found")
 
