@@ -1,4 +1,5 @@
 .DS_Store
-*.venv/*
+.venv/
 *.DS_Store
-0-basics/7-s3-object-store/input/*
+7-s3-object-store/input/
+
