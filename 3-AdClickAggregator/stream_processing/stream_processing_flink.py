@@ -48,7 +48,7 @@ env = StreamExecutionEnvironment.get_execution_environment()
 env.set_parallelism(20)
 env.set_stream_time_characteristic(TimeCharacteristic.EventTime)
 
-# Create a DataStream from the sample data
+# Create a DataStream from the Algorithms data
 source = env.from_collection(
     sample_data,
     type_info=Types.TUPLE([Types.STRING(), Types.STRING()])
